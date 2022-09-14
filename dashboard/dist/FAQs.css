@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+:root {
+    --color-text: hsl(0, 0%, 0%);
+    --color-text-muted: hsl(248, 10%, 40%);
+    --color-purple: slateblue;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:10vh;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    min-height: 110vh;
+    color: var(--color-text);
+    background: hsl(248, 53%, 95%);
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+}
+
+.accordion {
+    width: 42rem;
+    padding: 1.2rem 0;
+    border-radius: 1rem;
+    background: white;
+    /*   box-shadow: 0 0 5rem lightgrey; */
+}
+
+.accordion__heading {
+    font-weight: 800;
+    margin-bottom: 1rem;
+    padding: 0 1.4rem;
+}
+
+.accordion__item:not(:last-child) {
+    border-bottom: 1px solid lightgrey;
+}
+
+.accordion__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    background: white;
+    border: none;
+    outline: none;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.accordion__btn:hover {
+    color: var(--color-purple);
+    background: hsl(248, 53%, 97%);
+}
+
+.accordion__item--active .accordion__btn {
+    color: var(--color-purple);
+    border-bottom: 2px solid var(--color-purple);
+    background: hsl(248, 53%, 97%);
+}
+
+.fa-lightbulb {
+    padding-right: 1rem;
+}
+
+.accordion__icon {
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out;
+    opacity: 0.9;
+}
+
+.accordion__item--active .accordion__icon {
+    transform: rotate(135deg);
+}
+
+.accordion__content {
+    font-weight: 300;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    color: var(--color-text-muted);
+    transform: translateX(16px);
+    transition: max-height 0.5s ease, opacity 0.5s, transform 0.5s;
+}
+
+.accordion__content p {
+    padding: 1rem 1.8rem;
+}
+
+.accordion__item--active .accordion__content {
+    opacity: 1;
+    transform: translateX(0px);
+    max-height: 100vh;
+}
